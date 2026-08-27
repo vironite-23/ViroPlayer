@@ -1,0 +1,9 @@
+<resources>
+    <color name="player_black">#000000</color>
+    <color name="player_surface">#1F1F1F</color>
+    <color name="player_surface_dark">#101114</color>
+    <color name="player_text">#F5F5F5</color>
+    <color name="player_text_dim">#A7A7A7</color>
+    <color name="player_accent">#4D90FF</color>
+    <color name="player_scrubber">#A0A0A0</color>
+</resources>
