@@ -20,15 +20,16 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
-          cache: gradle
 
-      - name: Set up Gradle 9.3
+      - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '9.3'
+
+      - name: Static analysis (advisory, does not fail the build)
+        run: ./gradlew detekt --continue
+        continue-on-error: true
 
       - name: Build debug APK and release bundle
-        run: gradle --no-daemon clean assembleDebug bundleRelease
+        run: ./gradlew clean assembleDebug bundleRelease
 
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
