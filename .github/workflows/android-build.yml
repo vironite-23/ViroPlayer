@@ -24,6 +24,9 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
       - name: Static analysis (advisory, does not fail the build)
         run: ./gradlew detekt --continue
         continue-on-error: true
