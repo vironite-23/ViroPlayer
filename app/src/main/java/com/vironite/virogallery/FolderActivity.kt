@@ -148,6 +148,7 @@ private fun VideoCard(video: VideoItem, context: Context, selected: Boolean, onT
 
 @Composable
 private fun VideoListItem(video: VideoItem, context: Context, selected: Boolean, onToggle: (String) -> Unit) {
+    val selectedColor = Color(context.getSharedPreferences("viro_settings", Context.MODE_PRIVATE).getInt("selected_color", 0x334D90FF.toInt()))
     Row(Modifier.fillMaxWidth().clickable { if (selected) onToggle(video.uri.toString()) else openPlayer(context, video) }.padding(horizontal = 14.dp, vertical = 7.dp), verticalAlignment = Alignment.CenterVertically) {
         Box(Modifier.size(126.dp, 72.dp).clip(RoundedCornerShape(9.dp)).background(MaterialTheme.colorScheme.surfaceVariant)) { VideoThumbnail(video.uri, Modifier.fillMaxSize(), ContentScale.Crop); if (selected) Box(Modifier.fillMaxSize().background(selectedColor)) }
         Column(Modifier.weight(1f).padding(horizontal = 12.dp)) { Text(video.displayName, maxLines = 2, overflow = TextOverflow.Ellipsis, fontWeight = FontWeight.Medium); Text(formatDuration(video.durationMs), color = MaterialTheme.colorScheme.onSurfaceVariant, style = MaterialTheme.typography.bodySmall); Text(formatDate(video.dateModifiedMs), color = MaterialTheme.colorScheme.onSurfaceVariant, style = MaterialTheme.typography.labelSmall) }

@@ -118,3 +118,16 @@ The code intentionally leaves these areas open:
 - Folder page supports Grid/List modes and sorting by newest, oldest, name and duration.
 - Settings contains library, playback, display and UI Colors sections. Music is intentionally not a separate feature/tab.
 - UI Colors persist in `viro_settings`, including background, card/panel, selected/highlight, accent and bottom navigation bar colors.
+
+## Build
+
+The repository includes a GitHub Actions workflow at `.github/workflows/android-build.yml`.
+It uses JDK 21 and Gradle 9.3, builds the debug APK and release AAB, and publishes both as workflow artifacts.
+
+For a local build, install JDK 21 and Gradle 9.3, then run:
+
+```bash
+gradle clean assembleDebug bundleRelease
+```
+
+The generated app icon is `app/src/main/res/drawable-nodpi/virogallery_icon.png` and is registered as both the launcher icon and round icon.
